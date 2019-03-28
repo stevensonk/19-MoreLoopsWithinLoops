@@ -4,8 +4,8 @@ in the context of TWO-DIMENSIONAL GRAPHICS.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Keely Stevenson.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -53,6 +53,38 @@ def draw_upside_down_wall(rectangle, n, window):
     # TODO: 2. Implement and test this function.
     #     Some tests are already written for you (above).
     # -------------------------------------------------------------------------
+
+    corner1 = rectangle.get_lower_left_corner()
+    corner2 = rectangle.get_upper_right_corner()
+    dx = rectangle.get_width()
+    dy = rectangle.get_height()
+
+    for i in range(n):
+        if i == 0:
+            rectangle.attach_to(window)
+        else:
+            corner1.move_by(0, -1 * dy)
+            corner2.move_by(0, -1 * dy)
+            for k in range(i + 1):
+                if k == 0:
+                    if i % 2 == 0:
+                        corner1.move_by(-0.5 * dx, 0)
+                        corner2. move_by(-0.5 * dx, 0)
+                    else:
+                        corner1.move_by(0.5 * dx, 0)
+                        corner2.move_by(0.5 * dx, 0)
+                    new_rectangle = rg.Rectangle(corner1, corner2)
+                    new_rectangle.attach_to(window)
+                else:
+                    if i % 2 == 0:
+                        corner1.move_by(1 * dx, 0)
+                        corner2.move_by(1 * dx, 0)
+                    else:
+                        corner1.move_by(-1 * dx, 0)
+                        corner2.move_by(-1 * dx, 0)
+                    new_rectangle = rg.Rectangle(corner1, corner2)
+                    new_rectangle.attach_to(window)
+    window.render()
 
 
 # -----------------------------------------------------------------------------
