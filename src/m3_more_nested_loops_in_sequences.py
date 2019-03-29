@@ -436,16 +436,12 @@ def first_is_elsewhere_too(seq_seq):
     if first_sequence == [] or first_sequence == () or first_sequence == '':
         return False
     else:
-        number = first_sequence[0]
-        print(number)
-        for k in range(1, len(seq_seq)):
-            for n in seq_seq[k]:
-                if n == number:
-                    return True
-        for k in range(1, len(first_sequence)):
-            if first_sequence[k] == number:
-                return True
-
+        for k in first_sequence:
+            number = k
+            for n in range(1, len(seq_seq)):
+                for i in seq_seq[n]:
+                    if i == number:
+                        return True
         return False
 
 
